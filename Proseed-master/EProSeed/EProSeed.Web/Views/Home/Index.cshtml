@@ -1,0 +1,124 @@
+﻿@model vmDashBoard
+@{
+    ViewBag.Title = "Dashboard";
+
+}
+<div class="row">
+    <div class="col-md-6">
+
+        @{
+            AjaxOptions ajBatch = new AjaxOptions();
+
+            ajBatch.InsertionMode = InsertionMode.Replace;
+            ajBatch.UpdateTargetId = "InducteeList";
+            ajBatch.HttpMethod = "POST";
+            ajBatch.LoadingElementId = "loading";
+
+        }
+
+        <h3>Batch</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Trainer
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.BatchList != null && Model.BatchList.Count() > 0)
+                            {
+                                var BatchDetails = Model.BatchList.OrderByDescending(b => b.Id);
+                                EProSeed.Lib.BLL.UserType CurrentUserType = EProSeed.Lib.BLL.UserType.None;
+                                //bool GotUserType = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out CurrentUserType);
+                                bool GotUserType = Enum.TryParse<EProSeed.Lib.BLL.UserType>(EProSeed.Lib.BLL.UserType.Trainer.ToString(), out CurrentUserType);
+
+
+
+                                foreach (var BatchDetail in BatchDetails)
+                                {
+
+                        <tr id="batch-@BatchDetail.Id">
+                            <td>
+                                @Ajax.ActionLink(BatchDetail.Name, "GetInducteesByBatchID", "inductee", new { @BatchID = BatchDetail.Id }, ajBatch, new { @class = "ShowBatchName" })
+                            </td>
+                            <td>
+                                @if (BatchDetail.trainer != null)
+                                            {
+                                    <text>
+                                        @BatchDetail.trainer.Name
+                                    </text>
+                                }
+                            </td>
+
+                            <td>
+                                @BatchDetail.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).FirstOrDefault()
+                            </td>
+                            <td>
+                                @BatchDetail.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).LastOrDefault()
+                            </td>
+                            <td>
+                                @if (GotUserType && CurrentUserType == EProSeed.Lib.BLL.UserType.Trainer)
+                                            {
+                                    <a href="/batch/edit/@BatchDetail.Id" data-toggle="tooltip" title="Edit '@BatchDetail.Name'" class="blue"> <i class="ace-icon fa fa-2x fa-pencil"></i></a>
+
+
+                                    <a href="/batch/delete/@BatchDetail.Id" data-toggle="tooltip" onclick="return confirm('Are you sure you want to delete this batch.')" class="red"
+                                       title="Delete '@BatchDetail.Name'"><i class="ace-icon fa fa-2x fa-trash"></i></a>
+                                }
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" align="center">
+                            No Batch
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <h3>
+            @if (Model.BatchList != null && Model.BatchList.Count > 0)
+            {
+                <h3>
+                    <span id="DashboardBatchName">@Model.BatchList.LastOrDefault().Name Trainees</span>
+                </h3>
+            }
+
+        </h3>
+        <div id="InducteeList">
+            @{
+                if (Model.BatchList != null && Model.BatchList.Count > 0)
+                {
+                    var _Batch = Model.BatchList.LastOrDefault();
+
+                    var inducteelist = Model.InducteeList.Where(i => i.BatchID == _Batch.Id).ToList();
+                    Html.RenderPartial("~/views/Inductee/InducteeByBatch.cshtml", inducteelist);
+                }
+            }
+
+        </div>
+
+
+
+    </div>
+</div>

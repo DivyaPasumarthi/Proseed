@@ -1,0 +1,60 @@
+﻿@model IEnumerable<EProSeed.Models.BatchModel>
+@{
+    ViewBag.Title = "Feedback For Trainer";
+}
+<div class="col-md-12">
+    <div class="table-responsive" style="max-height:900px;overflow:auto;">
+        <table class="table table-striped">
+            <thead>
+                <tr>                                    
+                    <th>
+                        Trainer
+                    </th>
+                    <th>
+                        Batch
+                    </th>
+                    <th>
+                        Start Date
+                    </th>
+                    <th>
+                        End Date
+                    </th>                   
+                    <th>
+                        Email
+                    </th>                    
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>               
+                @foreach (var batch in Model)
+                {                    
+                    <tr id="row-@batch.trainer.Id">                                               
+                        <td>
+                            @batch.trainer.Name
+                        </td>
+                        <td>
+                            @batch.Name
+                        </td>
+                        <td>
+                            @batch.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).FirstOrDefault()
+                        </td> 
+                        <td>
+                            @batch.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).LastOrDefault()
+                        </td>  
+                        <td>
+                            <a href="mailto:@batch.trainer.Email">@batch.trainer.Email</a>
+                        </td>                    
+                        <td>                            
+                            &nbsp;
+                            <a href="/TrainerFeedback/TrainerFeedback/@batch.Id" data-toggle="tooltip" title="Feedback For Trainer">
+                                <i class="fa fa-2x fa-archive" aria-hidden="true"></i>
+                            </a>
+                        </td>
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>        
+    </div>
+</div>
+

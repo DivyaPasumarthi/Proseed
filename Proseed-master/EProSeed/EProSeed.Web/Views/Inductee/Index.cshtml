@@ -1,0 +1,105 @@
+﻿@model IList<EProSeed.Models.InducteeModel>
+@{
+    ViewBag.Title = "Trainee List";
+}
+@{
+            EProSeed.Lib.BLL.UserType UserType = EProSeed.Lib.BLL.UserType.None;
+            bool GotUser = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out UserType);
+            if (GotUser && UserType == EProSeed.Lib.BLL.UserType.Trainer)
+            {
+        <p class="text-right">
+            <a href="/inductee/create" class="btn btn-success">Create Trainee</a>
+        </p>
+    }
+}
+<div class="col-md-12">
+    <div class="table-responsive" style="max-height:900px;overflow:auto;">
+        @using (Html.BeginForm())
+        {
+            @*@Html.AntiForgeryToken()*@
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Emp-Id
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Batch
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int count = 0; }
+                @foreach (var Inductee in Model.OrderByDescending(b => b.Id))
+                {
+                    count++;
+                    <tr id="row-@Inductee.Id">
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            @Inductee.Name
+                        </td>
+                        <td>
+                            @Inductee.EmpId
+                        </td>
+                        <td>
+                            <a href="mailto:@Inductee.Email">@Inductee.Email</a>
+                        </td>
+                        <td>
+                            @if (Inductee.Batch != null)
+                            {
+                                <text>@Inductee.Batch.Name</text>
+                            }
+                            else
+                            {
+                                <text>No-Batch</text>
+                            }
+                        </td>
+                        <td>
+                            @Inductee.Phone
+                        </td>
+                        <td>
+                            @{
+                                EProSeed.Lib.BLL.UserType CurrentUserType = EProSeed.Lib.BLL.UserType.None;
+                                bool GotUserType = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out CurrentUserType);
+                                if (GotUserType && CurrentUserType == EProSeed.Lib.BLL.UserType.Trainer)
+                                {
+                                    <a href="/inductee/edit/@Inductee.Id" data-toggle="tooltip" title="Edit '@Inductee.Name'" class="blue"> <i class="ace-icon fa fa-2x fa-pencil"></i></a>
+
+                                    <a href="/inductee/delete/@Inductee.Id" data-toggle="tooltip" class="red" title="Delete '@Inductee.Name'"><i class="ace-icon fa fa-2x fa-trash"></i></a>
+
+                                    <a href="/feedback/of/@Inductee.Id" data-toggle="tooltip" title="Feedback">
+                                        <i class="fa fa-2x fa-archive" aria-hidden="true"></i>
+                                    </a>
+                                }
+                                string UserEmailId = Session["UserEmailId"].ToString();
+                                if (GotUserType && CurrentUserType == EProSeed.Lib.BLL.UserType.Trainee && UserEmailId == Inductee.Email)
+                                {
+                                    <a href="/feedback/of/@Inductee.Id" data-toggle="tooltip" title="Feedback">
+                                        <i class="fa fa-2x fa-archive" aria-hidden="true"></i>
+                                    </a>
+                                }
+                            }
+                        </td>
+
+                    </tr>
+                                }
+            </tbody>
+        </table>
+                                }
+    </div>
+</div>

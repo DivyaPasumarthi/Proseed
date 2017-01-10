@@ -1,0 +1,224 @@
+﻿@model  EProSeed.Models.InducteeModel
+@{
+    ViewBag.Title = "Feedback";
+}
+<div class="col-md-12">
+    <div class="table-responsive">
+        <div class="col-md-12" style="line-height: 40px;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Trainee: <strong>@Model.Name</strong></label>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <label>Batch Name: <strong>@Model.Batch.Name</strong></label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 text-right">
+            <div class="row">
+                <div class="form-group">
+                </div>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Trainer
+                    </th>
+                    <th>
+                        Passion For Client Success
+                    </th>
+                    <th>
+                        Focus On Quality
+                    </th>
+                    <th>
+                        Communication
+                    </th>
+                    <th>
+                        Transparency
+                    </th>
+                    <th>
+                        Discipline
+                    </th>
+                    <th>
+                        Energy
+                    </th>
+                    <th>
+                        Team Player
+                    </th>
+                    <th>
+                        Commitment
+                    </th>
+                    <th>
+                        Ownership
+                    </th>
+                    <th>
+                        Technical Competency
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var InducteeFeedback in Model.Feedback.OrderByDescending(f => f.FeedbackDate).ToList())
+                {
+                    <tr>
+                        <td>
+                            @InducteeFeedback.FeedbackDate.ToShortDateString()
+                        </td>
+                        <td>
+                            <span>@InducteeFeedback.Trainer.Name</span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link toggleMyData" data-target="#Passion-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.PassionForClientSuccessComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.PassionForClientSuccessRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" class="btn btn-link toggleMyData"
+                                    data-target="#FocusOnQuality-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.FocusOnQualityComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.FocusOnQualityRating
+                                </strong>
+                            </button>
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" class="btn btn-link toggleMyData"
+                                    data-target="#Communication-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.CommunicationComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.CommunicationRating
+                                </strong>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link toggleMyData"
+                                    data-target="#Transparency-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.TransparencyComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TransparencyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link toggleMyData"
+                                    data-target="#Discipline-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.DisciplineComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.DisciplineRating
+                                </strong>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link toggleMyData"
+                                    data-target="#Energy-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.EnergyComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.EnergyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link toggleMyData"
+                                    data-target="#TeamPlayer-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.TeamPlayerComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TeamPlayerRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link toggleMyData"
+                                    data-target="#Commitment-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.CommitmentComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.CommitmentRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" class="btn btn-link toggleMyData"
+                                    data-target="#OwnerShip-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.OwnerShipComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.OwnerShipRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-link toggleMyData"
+                                    data-target="#TechnicalCompetency-@InducteeFeedback.PropertyId"
+                                    data-targetVal="@InducteeFeedback.Property.TechnicalCompetencyComment"
+                                    data-rowTarget="#row-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TechnicalCompetencyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                        </td>
+                        @{
+                            EProSeed.Lib.BLL.UserType CurrentUserType = EProSeed.Lib.BLL.UserType.None;
+                            bool GotUserType = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out CurrentUserType);
+                            if (GotUserType && CurrentUserType == EProSeed.Lib.BLL.UserType.Trainer)
+                            {
+                                <td>
+                                    <a href="/feedback/edit/@InducteeFeedback.ID">Edit </a>
+                                    &nbsp;
+                                    <a onclick="return confirm('Are you sure?');" href="/feedback/delete/?id=@InducteeFeedback.ID&InducteeId=@InducteeFeedback.InducteeID"> Delete </a>
+                                </td>
+                            }
+                        }
+                    </tr>
+
+                    <tr id="row-@InducteeFeedback.PropertyId" style="display:none;">
+                        <td style="border:none" colspan="12"></td>
+                    </tr>
+
+
+                            }
+
+            </tbody>
+
+            @{  EProSeed.Lib.BLL.UserType UserType = EProSeed.Lib.BLL.UserType.None;
+                bool GotUser = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out UserType);
+                if (GotUser && UserType == EProSeed.Lib.BLL.UserType.Trainer)
+                {
+                    <tfoot>
+                        <tr>
+                            <td colspan="16" align="right">
+                                <a href="/feedback/Create/@Model.Id" class="btn btn-success">Add <i class="fa fa-plus"></i></a>
+                            </td>
+                        </tr>
+                    </tfoot>
+                }
+            }
+
+        </table>
+    </div>
+</div>

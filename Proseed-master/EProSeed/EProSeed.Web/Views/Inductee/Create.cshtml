@@ -1,0 +1,42 @@
+﻿@model EProSeed.Models.InducteeModel
+
+@{
+    ViewBag.Title = "Create Trainee";
+
+}
+
+<div class="col-md-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <label>Batch</label>
+            @Html.DropDownListFor(m => m.BatchID, ViewBag.BatchList as SelectList, "Select Batch", new { @class = "form-control" })
+            @Html.ValidationMessageFor(m=>m.BatchID)
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(x => x.EmpId)
+            @Html.TextBoxFor(x => x.EmpId, new { @class = "form-control ", @placeholder = "Employee ID" })
+            @Html.ValidationMessageFor(x => x.EmpId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Name" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+            @Html.ValidationMessageFor(x => x.Email)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Phone)
+            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control", @placeholder = "Phone Number" })
+            @Html.ValidationMessageFor(x => x.Phone)
+        </div>
+        <input type="submit" class="btn btn-success" value="Create" />
+    }
+</div>

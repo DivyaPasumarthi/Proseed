@@ -1,0 +1,226 @@
+﻿@model vmFeedbackProperty
+@{
+    ViewBag.Title = "Edit Feedback";
+}
+
+<div class="col-md-12">
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group" style="margin-bottom:5px;">
+                <label>Trainee: </label>
+                <strong>@Model.InducteeName</strong>
+            </div>
+            <div class="form-group" style="margin-bottom:5px;">
+                <label>Trainer: </label>
+                <strong>@Model.TrainerName</strong>
+            </div>
+            <div class="form-group" style="margin-bottom:5px;">
+                <label>Batch: </label>
+                <strong>@Model.BatchName</strong>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+    <hr />
+
+    <!--Design change-->
+    <div class="container">
+        @using (Html.BeginForm())
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="hidden">
+
+                @Html.HiddenFor(m => m.Property.ID)
+                @Html.HiddenFor(m => m.InducteeID)
+                @Html.HiddenFor(m => m.TrainerID)
+                @Html.HiddenFor(m => m.FeedBackID)
+                @Html.HiddenFor(x => x.Property.PassionForClientSuccessRating, new { @id = "PassionForClientSuccess" });
+                @Html.HiddenFor(x => x.Property.FocusOnQualityRating, new { @id = "FocusOnQuality" });
+                @Html.HiddenFor(x => x.Property.CommunicationRating, new { @id = "Communication" });
+                @Html.HiddenFor(x => x.Property.TransparencyRating, new { @id = "Transparency" });
+                @Html.HiddenFor(x => x.Property.DisciplineRating, new { @id = "Discipline" });
+                @Html.HiddenFor(x => x.Property.EnergyRating, new { @id = "Energy" });
+                @Html.HiddenFor(x => x.Property.TeamPlayerRating, new { @id = "TeamPlayer" });
+                @Html.HiddenFor(x => x.Property.CommitmentRating, new { @id = "Commitment" });
+                @Html.HiddenFor(x => x.Property.OwnerShipRating, new { @id = "OwnerShip" });
+                @Html.HiddenFor(x => x.Property.TechnicalCompetencyRating, new { @id = "TechnicalCompetency" });
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>
+                            Date
+                        </label>
+                        @Html.DropDownListFor(m => m.Date, Model.BatchDates, "Select date", new { @class = "form-control" })
+                        @*@Html.DropDownListFor(m => m.Date, Model.Date as SelectList, "Select date", new { @class = "form-control" })*@
+                        @Html.ValidationMessageFor(m => m.Date)
+                        <script>
+                            $(document).ready(function () {
+                                $('#Date').val('@Model.Date');
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.PassionForClientSuccessRating)
+                    <div class="form-group">
+                        <div id="slider-connect-PassionForClientSuccess" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-PassionForClientSuccess-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.PassionForClientSuccessRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.PassionForClientSuccessComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.PassionForClientSuccessComment)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.FocusOnQualityRating)
+                    <div class="form-group">
+                        <div id="slider-connect-FocusOnQuality" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-FocusOnQuality-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.FocusOnQualityRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.FocusOnQualityComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.FocusOnQualityComment)
+                    </div>
+
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.CommunicationRating)
+                    <div class="form-group">
+                        <div id="slider-connect-Communication" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-Communication-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.CommunicationRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.CommunicationComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.CommunicationComment)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.TransparencyRating)
+                    <div class="form-group">
+                        <div id="slider-connect-Transparency" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-Transparency-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.TransparencyRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.TransparencyComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.TransparencyComment)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.DisciplineRating)
+                    <div class="form-group">
+                        <div id="slider-connect-Discipline" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-Discipline-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.DisciplineRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.DisciplineComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.DisciplineComment)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.EnergyRating)
+                    <div class="form-group">
+                        <div id="slider-connect-Energy" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-Energy-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.EnergyRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.EnergyComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.EnergyComment)
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.TeamPlayerRating)
+                    <div class="form-group">
+                        <div id="slider-connect-TeamPlayer" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-TeamPlayer-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.TeamPlayerRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.TeamPlayerComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.TeamPlayerComment)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.CommitmentRating)
+                    <div class="form-group">
+                        <div id="slider-connect-Commitment" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-Commitment-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.CommitmentRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.CommitmentComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.CommitmentComment)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.OwnerShipRating)
+                    <div class="form-group">
+                        <div id="slider-connect-OwnerShip" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-OwnerShip-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.OwnerShipRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.OwnerShipComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.OwnerShipComment)
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    @Html.LabelFor(x => x.Property.TechnicalCompetencyRating)
+                    <div class="form-group">
+                        <div id="slider-connect-TechnicalCompetency" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                        <div id="slider-TechnicalCompetency-value" class="slider-value"></div>
+                        @Html.ValidationMessageFor(x => x.Property.TechnicalCompetencyRating)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.TextAreaFor(x => x.Property.TechnicalCompetencyComment, new { @class = "form-control", @placeholder = "Feedback" })
+                        @Html.ValidationMessageFor(x => x.Property.TechnicalCompetencyComment)
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align:left;">
+                <input type="submit" class="btn btn-success" value="Update" /> &nbsp;
+                <a href="/feedback/of/@Model.InducteeID" class="btn btn-default">Back</a>
+            </p>
+        }
+    </div>
+
+
+
+</div>

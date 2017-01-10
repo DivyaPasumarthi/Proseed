@@ -1,0 +1,124 @@
+﻿@model vmAdmin
+@{
+    ViewBag.Title = "Admin Page";
+}
+
+
+<div class="col-md-12">
+    <div class="table-responsive" style="max-height:900px;overflow:auto;">
+
+         <table class="table table-striped">
+            <h2>Trainer </h2> 
+            <thead>
+                <tr>
+                    <th>
+                        Sl.No
+                    </th>
+                    <th>
+                        Name
+                    </th>                   
+                    <th>
+                        Email
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                    @if (Model != null)
+                    {
+                        foreach(var trainer in Model.TrainerRepo.OrderBy(u => u.Id))
+                        {
+                        <tr>
+                        <td>
+                           @trainer.Id                            
+                        </td>
+                        <td>
+                           @trainer.Name
+                        </td>                       
+                        <td>
+                            <a href="">@trainer.Email</a>
+                        </td>
+                    </tr>                        
+                  }                    
+               }
+            </tbody>
+        </table>
+
+        <table class="table table-striped">
+            <h2>Inductee </h2> 
+            <thead>
+                <tr>
+                    <th>
+                        Sl.No
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Emp-Id
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Batch
+                    </th>
+                    <th>
+                        Phone
+                    </th>
+                    <th>
+                        Role
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                    @if (Model != null)
+                    {
+                        foreach(var inductee in Model.InducteeRepo.OrderBy(u => u.Id))
+                        {
+                        <tr>
+                        <td>
+                           @inductee.Id
+                        </td>
+                        <td>
+                           @inductee.Name
+                        </td>
+                        <td>
+                           @inductee.EmpId
+                        </td>
+                        <td>
+                            <a href="">@inductee.Email</a>
+                        </td>
+                        <td>
+                           @inductee.Batch.Name
+                        </td>
+                        <td>
+                           @inductee.Phone
+                        </td>
+                        <td>
+                            <select>
+                                <option value="admin">Admin</option>
+                                <option value="trainer">Trainer</option>
+                                <option value="trainee">Trainee</option>
+                            </select>
+                        </td>
+                        <td>
+                                <a href="" data-toggle="tooltip" title="Edit" class="blue"> <i class="ace-icon fa fa-2x fa-pencil"></i></a>
+
+                                <a href="" data-toggle="tooltip" class="red" title="Delete"><i class="ace-icon fa fa-2x fa-trash"></i></a>
+
+                                <a href="" data-toggle="tooltip" title="Feedback">
+                                    <i class="fa fa-2x fa-archive" aria-hidden="true"></i>
+                                </a>
+                        </td>
+
+                    </tr>
+                        }               
+                    }
+            </tbody>
+        </table>
+
+         <a href="/inductee/create" class="btn btn-success">Add Member</a>
+
+    </div>
+</div>

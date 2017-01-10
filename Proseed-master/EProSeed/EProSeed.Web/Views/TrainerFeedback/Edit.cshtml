@@ -1,0 +1,50 @@
+﻿@model EProSeed.Models.TrainersFeedbackModel
+@{
+    ViewBag.Title = "Edit Feedback For Trainer";
+
+}
+<div class="col-md-12">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.BatchID)
+        @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.TraineeID)
+        @Html.HiddenFor(model => model.DateCreated)
+        @Html.HiddenFor(model => model.Rating, new { @id = "TrainerRating" });
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.WhatWentWell)
+                @Html.TextBoxFor(model => model.WhatWentWell, new { @class = "form-control", @placeholder = "What went well?" })
+                @Html.ValidationMessageFor(model => model.WhatWentWell)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DidnotGoWell)
+                @Html.TextBoxFor(model => model.DidnotGoWell, new { @class = "form-control", @placeholder = "What didn't go well?" })
+                @Html.ValidationMessageFor(model => model.DidnotGoWell)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CanBeImproved)
+                @Html.TextBoxFor(model => model.CanBeImproved, new { @class = "form-control", @placeholder = "What can be improved?" })
+                @Html.ValidationMessageFor(model => model.CanBeImproved)
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rating)
+
+                <div id="slider-connect-TrainerRating" class="noUi-target noUi-ltr noUi-horizontal"></div>
+                <div id="slider-TrainerRating-value" class="slider-value"></div>
+                @Html.ValidationMessageFor(model => model.Rating)
+            </div>
+            <input type="submit" class="btn btn-success" value="Update" />
+
+            @Html.ActionLink("Back to Feedback", "TrainerFeedback", new { id = Model.BatchID })
+        </div>
+
+        }
+    </div>
+
+
+
+
+
+

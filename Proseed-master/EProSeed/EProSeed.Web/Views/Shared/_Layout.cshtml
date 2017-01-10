@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="icon" href="~/Content/images/eproseed.png" type="image/png" sizes="16x16">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+
+    @Styles.Render("~/Theming/css")
+    @Styles.Render("~/themes/css")
+    @Styles.Render("~/Theming/style")
+    <link href="~/Content/css/nouislider.min.css" rel="stylesheet" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+    <!--script-->
+    <script src="/Scripts/jquery2.1.4.min.js"></script>
+ 
+    <script src="/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="/Scripts/jquery.validate.js"></script>
+    @*<script src="/Scripts/jquery.validate.unobtrusive.js"></script>*@
+
+    <script src="/Scripts/bootstrap.js"></script>
+    <script src="/Scripts/moment.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/Scripts/nouislider.min.js"></script>
+    <script src="/Scripts/App.js"></script>
+    <script type="text/javascript" language="javascript">
+        function DisableBackButton() {
+            window.history.forward()
+        }
+        DisableBackButton();
+        window.onload = DisableBackButton;
+        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+        window.onunload = function () { void (0) }
+    </script>
+</head>
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default">
+        <div id="navbar-container" class="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+                <a href="~/" class="navbar-brand">
+                    <small>
+                        <img src="~/Content/images/eproseed2.png" />
+                        Pro Seed
+                    </small>
+                </a>
+            </div>
+            @*<div class="col-md-5 pull-right text-right">
+                                <span class="white username" style="line-height: 50px;">Welcome, @Session["Name"] [@Session["UserType"]] </span> || <span class="white username" style="line-height: 50px;"><a href="/account/logout" style="color:#FFF!important">
+                    <i class="fa fa-power-off "></i>
+                    Log out
+                </a></span>
+                            </div>*@
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+        <div id="sidebar" class="sidebar responsive ace-save-state" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+            <!-- /.sidebar-shortcuts -->
+            <ul class="nav nav-list" style="top: 0px;">
+                <li>
+                    <a href="~/">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text">Dashboard </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="@Url.Action("index", "Batch")">
+                        <i class="menu-icon fa fa-braille"></i>
+                        <span class="menu-text">Batch</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="@Url.Action("index", "Inductee")">
+                        <i class="menu-icon fa fa-user-circle-o"></i>
+                        <span class="menu-text">Trainee</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                <li>
+                    <a href="@Url.Action("index", "TrainerFeedback")">
+                        <i class="menu-icon fa fa-user-circle-o"></i>
+                        <span class="menu-text">Trainer Feedback</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                @*@if (Session["UserType"] != null & Convert.ToString(Session["UserType"]) == "Trainer")
+                {*@
+                    <li>
+                        <a href="@Url.Action("Index", "Report")">
+                            <i class="menu-icon fa fa-area-chart"></i>
+                            <span class="menu-text">Report</span>
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                @*}*@
+                @*@if (Session["UserType"] != null & Convert.ToString(Session["UserType"]) == "Trainer")
+                {*@
+                    <li>
+                        <a href="@Url.Action("Index", "Admin")">
+                            <i class="menu-icon fa fa-area-chart"></i>
+                            <span class="menu-text">Admin</span>
+                        </a>
+                        <b class="arrow"></b>
+                    </li>
+                @*}*@
+                @*<li class="">
+                        <a href="#">
+                            <i class="menu-icon fa fa-picture-o"></i>
+                            <span class="menu-text">Map</span>
+                        </a>
+                        <b class="arrow"></b>
+                    </li>*@
+
+            </ul>
+            <!-- /.nav-list -->
+        </div>
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <div class="page-header">
+                        <h1>
+                            @ViewBag.Title
+                        </h1>
+                    </div>
+                    <!-- /.page-header -->
+                    <div class="page-body">
+                        @RenderBody()
+                    </div>
+                    <!--page-body-->
+                </div>
+                <!-- /.page-content -->
+            </div>
+        </div>
+        <!-- /.main-content -->
+
+        <div class="page-footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">&copy; Prowareness 2016 </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (ViewData["SuccessMsg"] != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewData["SuccessMsg"]');
+        </script>
+    }
+    @if (ViewData["ErrorMsg"] != null)
+    {
+        <script type="text/javascript">
+            alert('@ViewData["ErrorMsg"]');
+        </script>
+    }
+
+    <div id="loading" style="display:none;">
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    </div>
+</body>
+</html>

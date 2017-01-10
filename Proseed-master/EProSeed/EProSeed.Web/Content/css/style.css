@@ -1,0 +1,241 @@
+﻿body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+
+.footer {
+    text-align: center;
+    font-size: 12px;
+    color: #ff6a00;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.field-validation-error {
+    color: #ff0000;
+    font-size: 12px;
+}
+
+.login {
+    min-height: 100%;
+    height: 100%;
+}
+
+
+    .login .logo {
+        color: #ff6500;
+        text-align: center;
+        font-size: 58px;
+        text-shadow: 1px 2px 2px #ccc;
+        margin: 0;
+        padding: 0;
+        padding-top: 10px;
+    }
+
+
+
+
+        .login .logo sub {
+            display: block;
+            line-height: 24px;
+        }
+
+        .login .logo span {
+            display: block;
+        }
+
+
+.btn {
+    border-radius: 0px !important;
+}
+
+
+.login .logo img {
+    width: 60px;
+}
+
+.ver-line {
+    padding-top: 35px;
+}
+
+.login-inner {
+    border-left: 1px solid #ff0000;
+    padding: 47px 0px;
+    padding-left: 60px;
+}
+
+.form-control {
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 86%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.navbar {
+    background: #ff6500;
+    border-radius: 0;
+    border: 0;
+}
+
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand {
+    color: #FFF;
+}
+
+.navbar-brand img {
+    height: 36px;
+}
+
+
+.ace-nav > li > a:hover {
+}
+
+.ace-nav > li > a {
+    background: #ff6500;
+}
+
+.no-skin .nav-list li.active > a:after {
+    border-right-color: #ff6900;
+}
+
+.no-skin .nav-list > li.active:after {
+    display: block;
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: -1px;
+    bottom: 0;
+    z-index: 1;
+    border: 2px solid #ff6900;
+    border-width: 0 2px 0 0;
+}
+
+.no-skin .nav-list > li.active > a {
+    font-weight: 700;
+    color: #ff6900;
+}
+
+.no-skin .nav-list > li:hover > a {
+    background-color: #FFF;
+    color: #ff6900;
+}
+
+
+.ace-nav {
+    height: inherit;
+}
+
+.countbtn:hover {
+    color: #FFF;
+    text-decoration: none;
+}
+
+.countbtn {
+    text-decoration: none;
+    width: 120px;
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background: #CCC;
+    color: #FFF;
+    border: 1px solid #eee;
+    min-height: 78px;
+    position: relative;
+    align-items: center;
+}
+
+    .countbtn span {
+    }
+
+    .countbtn .name {
+        display: block;
+    }
+
+
+.sidebar + .main-content {
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    min-height: 700px;
+}
+
+
+.page-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #ff6a00;
+    margin-left: 190px;
+}
+
+
+    .page-footer .footer-inner .footer-content {
+        padding: 8px;
+        line-height: 36px;
+        border-top: 3px double #E5E5E5;
+    }
+
+
+#loading {
+    position: fixed;
+    z-index: 9999999999;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 15%;
+    background: rgba(0,0,0,0.5);
+    color: #FFF;
+    text-align: center;
+}
+
+
+
+textarea {
+    resize: none;
+}
+
+.selected:hover,
+.selected:active,
+.selected {
+    font-size: 1.2em;
+}
+
+
+
+.FeedBack_Wrapper {
+    display: block;
+    position: absolute;
+    background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 5px;
+    z-index: 999999;
+}
+
+.slider-value {
+    padding-top: 10px;
+}
+.trainer-feedback td{
+   word-wrap: break-word;
+   max-width: 200px;
+}

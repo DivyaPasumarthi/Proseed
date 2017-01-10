@@ -1,0 +1,77 @@
+﻿@model IList<EProSeed.Models.BatchModel>
+@{
+    ViewBag.Title = "Batch list";
+}
+@{  EProSeed.Lib.BLL.UserType UserType = EProSeed.Lib.BLL.UserType.None;
+    bool GotUser = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out UserType);
+    if (GotUser && UserType == EProSeed.Lib.BLL.UserType.Trainer)
+    {
+
+        <p class="text-right">
+            <a href="/batch/create" class="btn btn-success">Create Batch</a>
+        </p>}
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Trainer
+            </th>
+            <th>
+                Start Date
+            </th>
+            <th>
+                End Date
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+
+            EProSeed.Lib.BLL.UserType CurrentUserType = EProSeed.Lib.BLL.UserType.None;
+            bool GotUserType = Enum.TryParse<EProSeed.Lib.BLL.UserType>(Session["UserType"].ToString(), out CurrentUserType);
+            foreach (var BatchDetail in Model.OrderByDescending(b => b.Id))
+            {
+                <tr>
+                    <td>
+                        @BatchDetail.Name
+                    </td>
+                    <td>
+                        @if (BatchDetail.trainer != null)
+                        {
+                            <text>
+                                @BatchDetail.trainer.Name
+                            </text>
+                        }
+                    </td>
+                    <td>
+                        @BatchDetail.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).FirstOrDefault()
+                    </td>
+                    <td>
+                        @BatchDetail.BatchDates.OrderBy(p => p.BatchDate).Select(p => p.BatchDate.ToShortDateString()).LastOrDefault()
+                    </td>
+
+                    <td>
+                        @if (GotUserType && CurrentUserType == EProSeed.Lib.BLL.UserType.Trainer)
+                        {
+
+                            <a href="/batch/edit/@BatchDetail.Id" data-toggle="tooltip" title="Edit" class="blue"> <i class="ace-icon fa fa-2x fa-pencil"></i></a>
+                                        <a href = "/batch/delete/@BatchDetail.Id" data - toggle = "tooltip" onclick = "return confirm('Are you sure you want to delete this batch.')" class="red" title="delete"><i class="ace-icon fa fa-2x fa-trash"></i></a>
+                        }
+                    </td>
+                </tr>
+                }
+
+            }
+
+    </tbody>
+</table>
+
+

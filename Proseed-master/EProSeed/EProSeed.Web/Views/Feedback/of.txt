@@ -1,0 +1,355 @@
+﻿@model  EProSeed.Models.InducteeModel
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<div class="col-md-12">
+    <div class="table-responsive">
+        
+        <div class="col-md-6" style="line-height: 40px;">
+           <div class="row">
+               <label>Inductee: <strong>@Model.Name</strong></label>
+           </div>
+        </div>
+        <div class="col-md-6 text-right">
+          <div class="row">
+              <div class="form-group">
+                 
+              </div>
+          </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Date
+                    </th>
+                    <th>
+                        Passion For Client Success
+                    </th>
+                    <th>
+                        Focus On Quality
+                    </th>
+                    <th>
+                        Communication
+                    </th>
+                    <th>
+                        Transparency
+                    </th>
+                    <th>
+                        Discipline
+                    </th>
+                    <th>
+                        Energy
+                    </th>
+                    <th>
+                        Team Player
+                    </th>
+                    <th>
+                        Commitment
+                    </th>
+                    <th>
+                        Ownership
+                    </th>
+                    <th>
+                        Technical Competency
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+               @foreach (var InducteeFeedback in Model.Feedback.OrderByDescending(f => f.FeedbackDate).ToList())
+               {
+                    <tr>
+                        <td>
+                            @InducteeFeedback.FeedbackDate.ToShortDateString()
+                        </td>
+                        <td>
+                            <button type="button"  class="btn btn-link toggleMyData" data-target="#Passion-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.PassionForClientSuccessRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="" role="document" id="Passion-@InducteeFeedback.PropertyId" style="display:none;">
+                                @InducteeFeedback.Property.PassionForClientSuccessComment
+                            </div>
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" data-toggle="modal" class="btn btn-link" data-target="#FocusOnQuality-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.FocusOnQualityRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade" role="document" id="FocusOnQuality-@InducteeFeedback.PropertyId">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Focus On Quality
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.FocusOnQualityComment
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#Communication-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.CommunicationRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="Communication-@InducteeFeedback.PropertyId">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Communication
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.CommunicationComment
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#Transparency-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TransparencyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="Transparency-@InducteeFeedback.PropertyId">
+
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Transparency
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.TransparencyComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#Discipline-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.DisciplineRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="Discipline-@InducteeFeedback.PropertyId">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Discipline
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.DisciplineComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <!---->
+
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#Energy-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.EnergyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="Energy-@InducteeFeedback.PropertyId">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Energy
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.EnergyComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#TeamPlayer-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TeamPlayerRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="TeamPlayer-@InducteeFeedback.PropertyId">
+
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Team Player
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.TeamPlayerComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#Commitment-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.CommitmentRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="Commitment-@InducteeFeedback.PropertyId">
+
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Commitment
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.CommitmentComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <!---->
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#OwnerShip-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.OwnerShipRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="OwnerShip-@InducteeFeedback.PropertyId">
+
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Ownership
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.OwnerShipComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <button type="button" data-toggle="modal" class="btn btn-link togglxeMyData" data-target="#TechnicalCompetency-@InducteeFeedback.PropertyId">
+                                <strong>
+                                    @InducteeFeedback.Property.TechnicalCompetencyRating
+                                </strong>
+                            </button>
+                            <!--model-->
+                            <div class="modal fade " role="document" id="TechnicalCompetency-@InducteeFeedback.PropertyId">
+
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                            <h4 class="modal-title" id="mySmallModalLabel">
+                                                Technical Competency
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            @InducteeFeedback.Property.TechnicalCompetencyComment
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </td>
+                        <td>
+                            <a href="/feedback/edit/@InducteeFeedback.ID">Edit </a>
+                            &nbsp;
+                            <a onclick="return confirm('Are you sure?');" href="/feedback/delete/?id=@InducteeFeedback.ID&InducteeId=@InducteeFeedback.InducteeID"> Delete </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+            <tfoot>
+                              <tr>
+                    <td colspan="12" align="right">
+                        <a href="/feedback/Create/@Model.Id" class="btn btn-success">Add <i class="fa fa-plus"></i></a>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EProSeed.Lib", "EProSeed.Lib\EProSeed.Lib.csproj", "{695F9F0C-896D-4E2A-ABBD-D97F8FC2A502}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EProSeed.DAL", "EProSeed.DAL\EProSeed.DAL.csproj", "{9874E7E3-1A84-4DC4-A0D6-36FC33CAF976}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EProSeed.Models", "EProSeed.Models\EProSeed.Models.csproj", "{5939C724-32A9-4396-8D12-2AC667B664EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EProSeed.Web", "EProSeed.Web\EProSeed.Web.csproj", "{F6FDF2DB-B441-4544-9C3B-B3E4CAA3DB97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proseed Unit Test", "Proseed Unit Test\Proseed Unit Test.csproj", "{40038F48-627E-446F-9F06-02EAD4D26AD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{920EFC71-1728-4588-9990-72FE093CF8D9}"
+	ProjectSection(SolutionItems) = preProject
+		sonar-project.properties = sonar-project.properties
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EProSeed.Business.Test", "EProSeed.Business.Test\EProSeed.Business.Test.csproj", "{8757CA56-CDD8-442D-89B9-38E526BB4842}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{695F9F0C-896D-4E2A-ABBD-D97F8FC2A502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{695F9F0C-896D-4E2A-ABBD-D97F8FC2A502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{695F9F0C-896D-4E2A-ABBD-D97F8FC2A502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{695F9F0C-896D-4E2A-ABBD-D97F8FC2A502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9874E7E3-1A84-4DC4-A0D6-36FC33CAF976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9874E7E3-1A84-4DC4-A0D6-36FC33CAF976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9874E7E3-1A84-4DC4-A0D6-36FC33CAF976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9874E7E3-1A84-4DC4-A0D6-36FC33CAF976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5939C724-32A9-4396-8D12-2AC667B664EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5939C724-32A9-4396-8D12-2AC667B664EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5939C724-32A9-4396-8D12-2AC667B664EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5939C724-32A9-4396-8D12-2AC667B664EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6FDF2DB-B441-4544-9C3B-B3E4CAA3DB97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6FDF2DB-B441-4544-9C3B-B3E4CAA3DB97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6FDF2DB-B441-4544-9C3B-B3E4CAA3DB97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6FDF2DB-B441-4544-9C3B-B3E4CAA3DB97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40038F48-627E-446F-9F06-02EAD4D26AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40038F48-627E-446F-9F06-02EAD4D26AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40038F48-627E-446F-9F06-02EAD4D26AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40038F48-627E-446F-9F06-02EAD4D26AD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8757CA56-CDD8-442D-89B9-38E526BB4842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8757CA56-CDD8-442D-89B9-38E526BB4842}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8757CA56-CDD8-442D-89B9-38E526BB4842}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8757CA56-CDD8-442D-89B9-38E526BB4842}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

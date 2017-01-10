@@ -1,0 +1,40 @@
+﻿@model EProSeed.Models.ReportModel
+
+<div class="col-md-11" id="reportPartial">
+
+    <div class="form-group">
+        <label>Trainer Name: </label>
+        @Html.LabelFor(x => x.TrainerName, Model.TrainerName)
+    </div>
+    @if (Model.InducteeId == -1 ) 
+    {
+        <div class="form-group">
+            <label>Number of Trainees: </label>
+            @Html.DisplayFor(m => m.NumberofInductees, new { @class = "form-control" })
+        </div>
+        <div class="form-group">
+            <label>Batch Average: </label>
+            <span class="success">@Html.DisplayFor(m => m.BatchAverage, new { @class = "form-control", @id = "batchAverage" })</span>
+        </div>
+    }
+    else 
+    {
+         <div class="form-group">
+            <label>Inductee Average: </label>
+            @Html.DisplayFor(m => m.InducteeAverage, new { @class = "form-control" })
+        </div>
+        <table>
+            <tr>
+                <th style="padding:10px">Day</th>
+                <th style="padding:10px">Score</th>
+            </tr>
+            @for (int i = 0; i < Model.FeedBacks.Count; i ++)
+            {
+                <tr>
+                    <td style="padding:10px">@String.Format("Day {0} ({1} - {2})", i+1, Model.FeedBacks[i].Date.ToString("MM/dd"), Model.FeedBacks[i].Date.ToString("dddd"))</td>
+                    <td style="padding:10px">@Model.FeedBacks[i].Score</td>
+                </tr>
+            }
+        </table>
+    }
+</div>
